@@ -16,28 +16,29 @@ class ControladorPaginas extends Controller
 		$photos = [
 			[
 				'id' => 1,
-				'image' => '{{ asset(RallyArrecifes01.jpg)}}',
+				'image' => 'RallyArrecifes01.jpg',
 				'text' => 'Descripcion 1',
 			],
 			[
 				'id' => 2,
-				'image' => '{{ asset(RallyArrecifes01.jpg)}}',
+				'image' => 'RallyArrecifes01.jpg',
 				'text' => 'Descripcion 2',
 			],
 			[
 				'id' => 3,
-				'image' => '{{ asset(RallyArrecifes01.jpg)}}',
+				'image' => 'RallyArrecifes01.jpg',
 				'text' => 'Descripcion 3',
 			],
 			[
 				'id' => 4,
-				'image' => '{{ asset(RallyArrecifes01.jpg)}}',
+				'image' => 'RallyArrecifes01.jpg',
 				'text' => 'Descripcion 4',
 			]
 		];
 
         return view('welcome', [
             'links' => $links,
+			'photos' => $photos,
         ]);
     }
 

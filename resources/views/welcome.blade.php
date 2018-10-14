@@ -15,8 +15,14 @@
 </div>
 
 <div class="row">
-	<div class="col-12">
-		<img src={{asset('RallyArrecifes01.jpg')}} class="img-fluid"></ig>
-	</div>
+	@foreach ($photos as $photo)
+		<div class="col-6">
+			<img class="img-thumbnail" src="{{ asset($photo['image']) }}">
+			<p class="card-text">
+				{{ $photo['text'] }}
+				<a href="photos/{{ $photo['id'] }}">Open</a>
+			</p>
+		</div>
+	@endforeach
 </div>
 @endsection
