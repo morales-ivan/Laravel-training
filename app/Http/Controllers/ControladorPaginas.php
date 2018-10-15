@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use Illuminate\Http\Request;
 
 class ControladorPaginas extends Controller
@@ -13,28 +14,30 @@ class ControladorPaginas extends Controller
             '/about' => 'Acerca de mi!'
         ];
 
-		$photos = [
-			[
-				'id' => 1,
-				'image' => 'RallyArrecifes01.jpg',
-				'text' => 'Descripcion 1',
-			],
-			[
-				'id' => 2,
-				'image' => 'RallyArrecifes01.jpg',
-				'text' => 'Descripcion 2',
-			],
-			[
-				'id' => 3,
-				'image' => 'RallyArrecifes01.jpg',
-				'text' => 'Descripcion 3',
-			],
-			[
-				'id' => 4,
-				'image' => 'RallyArrecifes01.jpg',
-				'text' => 'Descripcion 4',
-			]
-		];
+		// $photos = [
+		// 	[
+		// 		'id' => 1,
+		// 		'image' => 'RallyArrecifes01.jpg',
+		// 		'text' => 'Descripcion 1',
+		// 	],
+		// 	[
+		// 		'id' => 2,
+		// 		'image' => 'RallyArrecifes01.jpg',
+		// 		'text' => 'Descripcion 2',
+		// 	],
+		// 	[
+		// 		'id' => 3,
+		// 		'image' => 'RallyArrecifes01.jpg',
+		// 		'text' => 'Descripcion 3',
+		// 	],
+		// 	[
+		// 		'id' => 4,
+		// 		'image' => 'RallyArrecifes01.jpg',
+		// 		'text' => 'Descripcion 4',
+		// 	]
+		// ];
+
+		$photos = Photo::All();
 
         return view('welcome', [
             'links' => $links,
