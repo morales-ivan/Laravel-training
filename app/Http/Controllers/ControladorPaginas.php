@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Photo;
 use Illuminate\Http\Request;
 
+const LINKS = [
+	'https://www.linkedin.com/in/moralesivan' => 'LinkedIn',
+	'https://www.github.com/ivi982010' => 'GitHub',
+	'/about' => 'Acerca de mi!'
+];
+
 class ControladorPaginas extends Controller
 {
-    public function home() {
-        $links = [
-            'https://www.linkedin.com/in/moralesivan' => 'LinkedIn',
-            'https://www.github.com/ivi982010' => 'GitHub',
-            '/about' => 'Acerca de mi!'
-        ];
+	public function home() {
+
+		$photos = Photo::All();
 
 		// $photos = [
 		// 	[
@@ -37,22 +40,16 @@ class ControladorPaginas extends Controller
 		// 	]
 		// ];
 
-		$photos = Photo::All();
-
         return view('welcome', [
-            'links' => $links,
+            'links' => LINKS,
 			'photos' => $photos,
         ]);
     }
 
     public function about() {
-		$links = [
-            'https://www.linkedin.com/in/moralesivan' => 'LinkedIn',
-            'https://www.github.com/morales-ivan' => 'GitHub',
-            '/about' => 'Acerca de mi!'
-        ];
-        return view('about', [
-			'links' => $links,
+
+		return view('about', [
+			'links' => LINKS,
 		]);
     }
 
