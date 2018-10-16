@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+// Maximo de caracteres para la descripcion
+const MAX_CHAR = 90;
+
 class CreatePhotoRequest extends FormRequest
 {
     /**
@@ -24,7 +27,7 @@ class CreatePhotoRequest extends FormRequest
     public function rules()
     {
         return [
-			'description' => ['required', 'max:200']
+			'description' => ['required', 'max:'.MAX_CHAR]
 		];
     }
 
@@ -32,7 +35,7 @@ class CreatePhotoRequest extends FormRequest
 	{
 		return [
 			'description.required' => 'Campo requerido',
-			'description.max' => 'Maximo de caracteres: 200'
+			'description.max' => 'Maximo de caracteres: '.MAX_CHAR
 		];
 	}
 }
