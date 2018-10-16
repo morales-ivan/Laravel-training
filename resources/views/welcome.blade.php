@@ -17,7 +17,9 @@
 <div class="row">
 	@forelse ($photos as $photo)
 		<div class="col-6">
-			<img class="img-thumbnail" src="{{ asset($photo->image) }}">
+			<a href="photos/{{ $photo->id }}">
+				<img class="img-thumbnail" src="{{ asset($photo->image) }}">
+			</a>
 			<p class="card-text">
 				{{ $photo->text }}
 				<a href="photos/{{ $photo->id }}">Open</a>
