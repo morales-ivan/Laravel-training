@@ -2,7 +2,7 @@
 
 @section('content')
 <div class='jumbotron text-center'>
-    <h1>Ivan Morales</h1>
+    <h1 class="h3">Ivan Morales</h1>
 	<nav>
 		<ul class='nav nav-pills'>
 			@foreach ($links as $link => $text)
@@ -12,6 +12,22 @@
 			@endforeach
 		</ul>
 	</nav>
+</div>
+
+<div class="row">
+	<form action="/photos/create" method="post">
+		<div class="form-group">
+			{{ csrf_field() }}
+			<input type="text" name="description" class="form-control @if ($errors->has('description')) is-invalid @endif" placeholder="Describe la imagen">
+			@if ($errors->has('description'))
+				@foreach ($errors->get('description') as $error)
+					<div class="invalid-feedback">
+						{{ $error }}
+					</div>
+				@endforeach
+			@endif
+		</div>
+	</form>
 </div>
 
 <div class="row">
