@@ -34,7 +34,7 @@
 	@forelse ($photos as $photo)
 		<div class="col-6">
 			<a href="photos/{{ $photo->id }}">
-				<img class="img-thumbnail" src="{{ asset($photo->image) }}">
+				<img class="img-thumbnail" src="{{ $photo->image }}">
 			</a>
 			<p class="card-text">
 				{{ $photo->text }}
