@@ -13,6 +13,8 @@
 
 Route::get('/', 'ControladorPaginas@home');
 
+Route::get('/photos/{photo}', 'ControladorFotos@show');
+
 Route::get('/about', 'ControladorPaginas@about');
 
 Route::get('/prueba', 'ControladorPaginas@prueba');
