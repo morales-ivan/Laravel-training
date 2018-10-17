@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-	<form action="/photos/create" method="post">
+	<form class="col-3" action="/photos/create" method="post">
 		<div class="form-group">
 			{{ csrf_field() }}
 			<input type="text" name="description" class="form-control @if ($errors->has('description')) is-invalid @endif" placeholder="Describe la imagen">
@@ -48,5 +48,11 @@
 			</p>
 		</div>
 	@endforelse
+
+	@if (count($photos))
+	<div class="mt-3 mx-auto">
+		{{ $photos->links() }}
+	</div>
+	@endif
 </div>
 @endsection

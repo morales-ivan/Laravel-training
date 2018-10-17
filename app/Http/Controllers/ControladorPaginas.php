@@ -15,7 +15,7 @@ class ControladorPaginas extends Controller
 {
 	public function home() {
 
-		$photos = Photo::All();
+		$photos = Photo::Paginate(6);
 
 		// $photos = [
 		// 	[
