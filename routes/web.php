@@ -19,3 +19,7 @@ Route::post('/photos/create', 'ControladorFotos@create');
 Route::get('/about', 'ControladorPaginas@about');
 
 Route::get('/prueba', 'ControladorPaginas@prueba');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
