@@ -17,29 +17,6 @@ class ControladorPaginas extends Controller
 
 		$photos = Photo::Paginate(6);
 
-		// $photos = [
-		// 	[
-		// 		'id' => 1,
-		// 		'image' => 'RallyArrecifes01.jpg',
-		// 		'text' => 'Descripcion 1',
-		// 	],
-		// 	[
-		// 		'id' => 2,
-		// 		'image' => 'RallyArrecifes01.jpg',
-		// 		'text' => 'Descripcion 2',
-		// 	],
-		// 	[
-		// 		'id' => 3,
-		// 		'image' => 'RallyArrecifes01.jpg',
-		// 		'text' => 'Descripcion 3',
-		// 	],
-		// 	[
-		// 		'id' => 4,
-		// 		'image' => 'RallyArrecifes01.jpg',
-		// 		'text' => 'Descripcion 4',
-		// 	]
-		// ];
-
         return view('welcome', [
             'links' => LINKS,
 			'photos' => $photos,

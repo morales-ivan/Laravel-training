@@ -8,7 +8,7 @@
 		<nav>
 			<ul class='nav nav-pills'>
 				@foreach ($links as $link => $text)
-					<li class='nav-item'>
+					<li target="_blank" class='nav-item'>
 						<a class='nav-link' href="{{ $link }}">{{ $text }}</a>
 					</li>
 				@endforeach
@@ -16,6 +16,7 @@
 		</nav>
 	</div>
 </div>
+
 <div class="content">
     <p>
 		Aprendiendo php, html, bootstrap, laravel y mas... _p
