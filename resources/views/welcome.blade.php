@@ -33,14 +33,12 @@
 <div class="row">
 	@forelse ($photos as $photo)
 		<div class="col-12 col-md-6 mb-4 d-flex">
-			<div class="d-flex flex-column card p-2">
-				<div class="mb-auto">
-					<a href="photos/{{ $photo->id }}">
-						<img class="img-thumbnail" src="{{ $photo->image }}">
-					</a>
-					<p class="card-text mb-1">{{ $photo->text }}</p>
+			<div class="card shadow-sm">
+				<img class="card-img-top" src="{{ $photo->image }}">
+				<div class="card-body d-flex flex-column">
+					<p class="card-text">{{ $photo->text }}</p>
+					<a class="btn btn-block btn-light mt-auto" href="photos/{{ $photo->id }}">Open</a>
 				</div>
-				<a class="btn btn-block btn-light" href="photos/{{ $photo->id }}">Open</a>
 			</div>
 		</div>
 	@empty
