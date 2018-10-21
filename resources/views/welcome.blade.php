@@ -5,9 +5,9 @@
     <h1 class="h3">Ivan Morales</h1>
 	<nav class="flex-row d-flex">
 		<ul class='nav nav-pills'>
-			@foreach ($links as $link => $text)
+			@foreach ($links as $link)
 				<li class='nav-item pr-2'>
-					<a target="_blank" class='nav-link btn btn-light' href="{{ $link }}">{{ $text }}</a>
+					<a target="{{ $link[2] }}" class='nav-link btn btn-light' href="{{ $link[0] }}">{{ $link[1] }}</a>
 				</li>
 			@endforeach
 		</ul>
@@ -32,18 +32,14 @@
 
 <div class="row">
 	@forelse ($photos as $photo)
-		<div class="col-6 mb-4 d-flex">
+		<div class="col-12 col-md-6 mb-4 d-flex">
 		{{-- @if ($photo->id % 2) pl-3 pr-2 @else pl-2 pr-3 @endif"> --}}
-			<div class="card shadow-sm">
-				<div class="p-2">
+			<div class="card p-2 shadow-sm">
 					<a href="photos/{{ $photo->id }}">
 						<img class="img-thumbnail" src="{{ $photo->image }}">
 					</a>
-					<p class="card-text mb-1">
-						{{ $photo->text }}
-					</p>
-					<a class="btn btn-block btn-light"href="photos/{{ $photo->id }}">Open</a>
-				</div>
+					<p class="card-text mb-1">{{ $photo->text }}</p>
+					<a class="btn btn-block btn-light" href="photos/{{ $photo->id }}">Open</a>
 			</div>
 		</div>
 	@empty

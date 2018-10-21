@@ -6,10 +6,36 @@ use App\Photo;
 use Illuminate\Http\Request;
 
 const LINKS = [
-	'https://www.linkedin.com/in/moralesivan' => 'LinkedIn',
-	'https://www.github.com/ivi982010' => 'GitHub',
-	'/about' => 'Acerca de mi!'
+	[
+		'https://www.linkedin.com/in/moralesivan',
+		'LinkedIn',
+		'_blank'
+	],
+	[
+		'https://www.github.com/morales-ivan',
+		'GitHub',
+		'_blank'
+	],
+	[
+		'/prueba',
+		'Prueba',
+		''
+	],
+	[
+		'/about',
+		'Acerca de mi!',
+		''
+	]
 ];
+
+// const LINKS = [
+// 	'https://www.linkedin.com/in/moralesivan' => 'LinkedIn',
+// 	'https://www.github.com/ivi982010' => 'GitHub',
+// 	'/prueba' => 'Prueba',
+// 	'/about' => 'Acerca de mi!'
+// ]
+//
+// dd(LINKS);
 
 class ControladorPaginas extends Controller
 {
@@ -17,7 +43,7 @@ class ControladorPaginas extends Controller
 
 		$photos = Photo::Paginate(6);
 
-        return view('welcome', [
+		return view('welcome', [
             'links' => LINKS,
 			'photos' => $photos,
         ]);
@@ -31,6 +57,9 @@ class ControladorPaginas extends Controller
     }
 
     public function prueba() {
-        return view('prueba');
+
+        return view('prueba', [
+			'links' => LINKS,
+		]);
     }
 }
