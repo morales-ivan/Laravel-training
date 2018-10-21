@@ -33,13 +33,14 @@
 <div class="row">
 	@forelse ($photos as $photo)
 		<div class="col-12 col-md-6 mb-4 d-flex">
-		{{-- @if ($photo->id % 2) pl-3 pr-2 @else pl-2 pr-3 @endif"> --}}
-			<div class="card p-2 shadow-sm">
+			<div class="d-flex flex-column card p-2">
+				<div class="mb-auto">
 					<a href="photos/{{ $photo->id }}">
 						<img class="img-thumbnail" src="{{ $photo->image }}">
 					</a>
 					<p class="card-text mb-1">{{ $photo->text }}</p>
-					<a class="btn btn-block btn-light" href="photos/{{ $photo->id }}">Open</a>
+				</div>
+				<a class="btn btn-block btn-light" href="photos/{{ $photo->id }}">Open</a>
 			</div>
 		</div>
 	@empty
