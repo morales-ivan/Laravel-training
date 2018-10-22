@@ -22,15 +22,23 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
-		'username' => $name.random_int(0,100), // Tambien podria ser $userName
+		'username' => $name.random_int(0,100), // Tambien podria ser $userName()
 		'avatar' => $faker->imageUrl(300, 300, 'people')
     ];
 });
 
 $factory->define(App\Photo::class, function (Faker $faker) {
+	$reso = array(
+		[1280, 720],
+		[1280, 800],
+		[1024, 768]
+	);
+
+	$index = random_int(0,2);
+	
 	return [
-		'image' => $faker->imageUrl(1920, 1080, 'transport'),
-		'text' => $faker->words(random_int(3, 15), true),
+		'image' => $faker->imageUrl($reso[$index][0], $reso[$index][1], 'transport'),
+		'text' => $faker->sentence(random_int(6, 10)),
 		'user_id' => random_int(1,10)
 	];
 });

@@ -19,9 +19,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
+
 	<style>
-		body {
+		/* body {
 			background-color: #f7f9fa;
+		} */
+		#footer {
+			background-color: #E9ECEE;
+			height: 100px;
 		}
 	</style>
 </head>
@@ -80,10 +85,20 @@
             </div>
         </nav>
 
-        <main class="container pb-4">
+        <main class="container {{--bg-light--}} pb-4">
 			@yield('content')
         </main>
+
     </div>
+
+	<footer id="footer" class="footer">
+		<div class="container py-4 text-muted">
+			<span class="text-center">
+				Sitio dedicado al aprendizaje, con un footer especializado para el aprendizaje.<br>
+				© 2018 Ivan Morales
+			</span>
+		</div>
+	</footer>
 
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

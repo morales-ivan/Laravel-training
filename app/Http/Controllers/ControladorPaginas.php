@@ -34,14 +34,12 @@ const LINKS = [
 // 	'/prueba' => 'Prueba',
 // 	'/about' => 'Acerca de mi!'
 // ]
-//
-// dd(LINKS);
 
 class ControladorPaginas extends Controller
 {
 	public function home() {
 
-		$photos = Photo::Paginate(6);
+		$photos = Photo::Paginate(12);
 
 		return view('welcome', [
             'links' => LINKS,
