@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
 		DB::table('users')->insert([
             'name' => 'Ivan',
 			'username' => 'imorales',
@@ -31,9 +33,22 @@ class DatabaseSeeder extends Seeder
 		factory(App\User::class)
 			->times(18)
 			->create();
+
 		factory(App\Photo::class)
 			->times(150)
 			->create();
+
+		// Le doy una cantidad random de seguidores a cada uno de los usuarios
+		$users = User::all();
+
+		$users->each(function(App\User $user) use ($users) {
+			$cant = random_int(0, 12);
+
+			$user->following()->sync(
+				$users->random($cant)
+			);
+		});
+
 
 		// Otra forma de hacer seeding, pero no me gusta porque para cada usuario crea la misma cantidad de fotos
 		//

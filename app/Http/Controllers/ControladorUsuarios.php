@@ -14,4 +14,12 @@ class ControladorUsuarios extends Controller
 			'user' => $user
 		]);
 	}
+
+	public function following($username) {
+		$user = User::where('username', $username)->first();
+
+		return view('users.following', [
+			'user' => $user
+		]);
+	}
 }

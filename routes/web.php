@@ -17,6 +17,7 @@ Route::get('/photos/{photo}', 'ControladorFotos@show');
 Route::post('/photos/create', 'ControladorFotos@create')->middleware('auth');
 
 Route::get('/profile/{username}', 'ControladorUsuarios@show');
+Route::get('/profile/{username}/following', 'ControladorUsuarios@following');
 
 Route::get('/about', 'ControladorPaginas@about');
 
