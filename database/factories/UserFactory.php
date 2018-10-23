@@ -28,17 +28,18 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->define(App\Photo::class, function (Faker $faker) {
-	$reso = array(
+	$reso = [
 		[1280, 720],
 		[1280, 800],
 		[1024, 768]
-	);
+	];
 
 	$index = random_int(0,2);
-	
+
 	return [
 		'image' => $faker->imageUrl($reso[$index][0], $reso[$index][1], 'transport'),
 		'text' => $faker->sentence(random_int(6, 10)),
-		'user_id' => random_int(1,10)
+		'created_at' => $faker->dateTimeThisYear,
+		'user_id' => random_int(1,20)
 	];
 });

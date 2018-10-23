@@ -2,7 +2,7 @@
 
 @section('content')
 <div class='jumbotron rounded-bottom text-center shadow'>
-    <h1 class="h3">Ivan Morales</h1>
+    <h1 class="h1">Ivan Morales</h1>
 	<nav class="flex-row d-flex">
 		<ul class='nav nav-pills'>
 			@foreach ($links as $link)
@@ -57,8 +57,8 @@
 
 	{{-- Paginado --}}
 	@if (count($photos))
-		<div class="col-12 mt-2">
-			<div class="d-flex justify-content-end">
+		<div class="col-12 mt-4">
+			<div class="d-flex pagination justify-content-center">
 				{{ $photos->links() }}
 			</div>
 		</div>

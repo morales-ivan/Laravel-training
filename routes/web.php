@@ -16,6 +16,8 @@ Route::get('/', 'ControladorPaginas@home');
 Route::get('/photos/{photo}', 'ControladorFotos@show');
 Route::post('/photos/create', 'ControladorFotos@create')->middleware('auth');
 
+Route::get('/profile/{username}', 'ControladorUsuarios@show');
+
 Route::get('/about', 'ControladorPaginas@about');
 
 Route::get('/prueba', 'ControladorPaginas@prueba');

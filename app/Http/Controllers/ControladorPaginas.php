@@ -39,7 +39,7 @@ class ControladorPaginas extends Controller
 {
 	public function home() {
 
-		$photos = Photo::Paginate(12);
+		$photos = Photo::latest()->Paginate(12);
 
 		return view('welcome', [
             'links' => LINKS,

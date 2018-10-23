@@ -12,11 +12,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+		DB::table('users')->insert([
+            'name' => 'Ivan',
+			'username' => 'imorales',
+            'email' => 'ivan@admin.com',
+            'password' => bcrypt('password'),
+			'avatar' => 'https://lorempixel.com/300/300/people/?1'
+        ]);
+
+		DB::table('users')->insert([
+            'name' => 'Jairo',
+			'username' => 'jairolaupa',
+            'email' => 'jairo@group-celit.com',
+            'password' => bcrypt('password'),
+			'avatar' => 'https://lorempixel.com/300/300/people/?2'
+        ]);
+
 		factory(App\User::class)
-			->times(9)
+			->times(18)
 			->create();
 		factory(App\Photo::class)
-			->times(25)
+			->times(150)
 			->create();
 
 		// Otra forma de hacer seeding, pero no me gusta porque para cada usuario crea la misma cantidad de fotos

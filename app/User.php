@@ -29,6 +29,6 @@ class User extends Authenticatable
     ];
 
 	public function photos() {
-		return $this->hasMany(Photo::class);
+		return $this->hasMany(Photo::class)->orderBy('created_at', 'desc');
 	}
 }
