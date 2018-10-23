@@ -5,9 +5,9 @@
 @endsection
 
 @section('userContent')
-	@if (count($user->following))
+	@if (count($user->followers))
 		<div class="row">
-			@foreach ($user->following as $listedUser)
+			@foreach ($user->followers as $listedUser)
 				<div class="col-12 col-md-4 mb-3">
 					@include('users.assets.usercard')
 				</div>
@@ -15,7 +15,7 @@
 		</div>
 	@else
 		<p>
-			No hay fotos para mostrar.
+			Nadie sigue a este usuario :/
 		</p>
 	@endif
 @endsection

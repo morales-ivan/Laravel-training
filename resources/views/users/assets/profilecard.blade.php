@@ -25,9 +25,11 @@
 		<a href="/profile/{{ $user->username }}/" class="list-group-item list-group-item-action d-flex align-items-center">
 			Photos <span class="badge badge-pill badge-primary ml-auto">{{ count($user->photos) }}</span>
 		</a>
+		<a href="/profile/{{ $user->username }}/followers" class="list-group-item list-group-item-action d-flex align-items-center">
+			Followers <span class="badge badge-pill badge-primary ml-auto">{{ count($user->followers) }}</span>
+		</a>
 		<a href="/profile/{{ $user->username }}/following" class="list-group-item list-group-item-action d-flex align-items-center">
 			Following <span class="badge badge-pill badge-primary ml-auto">{{ count($user->following) }}</span>
 		</a>
-		<a href="#" class="list-group-item list-group-item-action d-flex align-items-center">Followers <span class="badge badge-pill badge-primary ml-auto">230</span></a>
 	</ul>
 </div>

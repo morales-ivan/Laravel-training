@@ -15,7 +15,7 @@
 		</div>
 	@else
 		<p>
-			No hay fotos para mostrar.
+			Este usuario no sigue a nadie :/
 		</p>
 	@endif
 @endsection

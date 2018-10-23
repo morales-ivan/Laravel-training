@@ -33,6 +33,14 @@ class ControladorUsuarios extends Controller
 		]);
 	}
 
+	public function followers($username) {
+		$user = $this->findByUsername($username);
+
+		return view('users.followers', [
+			'user' => $user
+		]);
+	}
+
 	private function findByUsername($username) {
 		return User::where('username', $username)->first();
 	}
