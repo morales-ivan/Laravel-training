@@ -5,12 +5,10 @@
 @endsection
 
 @section('userContent')
-	@if (count($user->following))
-		<div class="row">
-			@foreach ($user->following as $listedUser)
-				<div class="col-12 col-md-4 mb-3">
-					@include('users.assets.usercard')
-				</div>
+	@if (count($user->photos))
+		<div class="card-columns">
+			@foreach ($user->photos as $photo)
+				@include('photos.photocard')
 			@endforeach
 		</div>
 	@else
