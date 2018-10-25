@@ -28,6 +28,8 @@
 			background-color: #E9ECEE;
 			height: 100px;
 		}
+
+		@yield('styles')
 	</style>
 </head>
 <body>

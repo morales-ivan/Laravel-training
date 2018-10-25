@@ -1,5 +1,15 @@
 @extends('users.profile')
 
+{{-- @section('styles')
+	.card-columns {
+		column-count: 2;
+
+		@include media-breakpoint-up(md) {
+			column-count: 3;
+		}
+}
+@endsection --}}
+
 @section('user')
 	@include('users.assets.profilecard')
 @endsection
@@ -8,7 +18,7 @@
 	@if (count($user->photos))
 		<div class="card-columns">
 			@foreach ($user->photos as $photo)
-				@include('photos.photocard')
+				@include('photos.assets.userphotocard')
 			@endforeach
 		</div>
 	@else

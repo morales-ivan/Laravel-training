@@ -16,7 +16,9 @@
 		<a href="/profile/{{ $listedUser->username }}" class="list-group-item list-group-item-action d-flex">
 			Photos <span class="badge badge-pill badge-light ml-auto">{{ count($listedUser->photos) }}</span>
 		</a>
-		<a href="#" class="list-group-item list-group-item-action d-flex">Followers <span class="badge badge-pill badge-light ml-auto">230</span></a>
+		<a href="/profile/{{ $user->username }}/following" class="list-group-item list-group-item-action d-flex align-items-center">
+			Following <span class="badge badge-pill badge-light ml-auto">{{ count($user->following) }}</span>
+		</a>
 	</ul>
 	<div class="card-body p-3">
 		<div class="row">

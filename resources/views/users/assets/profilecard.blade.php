@@ -2,14 +2,14 @@
 	<div class="card-body">
 		<img class="rounded-circle shadow-sm w-100 img-fluid mb-3" src="{{ $user->avatar }}">
 		<h2 class="card-title text-center mb-0">{{ $user->name }}</h2>
-		<p class="text-muted text-center">
+		<p class="text-muted text-center mb-0">
 			{{ $user->username }}
 		</p>
 		@guest
 		@else
 			<form action="/profile/{{ $user->username }}/follow" method="post">
 				{{ csrf_field() }}
-				<button class="btn btn-primary btn-block">Follow</button>
+				<button class="btn btn-primary btn-block mt-2">Follow</button>
 				@if (session('success'))
 				<div class="alert alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
 					{{ session('success') }}
