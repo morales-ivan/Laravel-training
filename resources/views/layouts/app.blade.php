@@ -55,7 +55,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') . '?previous=' . Request::fullUrl() }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -69,6 +69,9 @@
 									</a>
 
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="/profile/{{ Auth::user()->username }}">
+											Profile
+										</a>
 										<a class="dropdown-item" href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
