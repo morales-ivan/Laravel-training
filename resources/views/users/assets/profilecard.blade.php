@@ -5,21 +5,27 @@
 		<p class="text-muted text-center mb-0">
 			{{ $user->username }}
 		</p>
-		@guest
-		@else
-			<form action="/profile/{{ $user->username }}/follow" method="post">
-				{{ csrf_field() }}
-				<button class="btn btn-primary btn-block mt-2">Follow</button>
+		@if (Auth::check() and (Auth::user() != $user))
+			@if (Auth::user()->isFollowing($user))
+				<form action="/profile/{{ $user->username }}/unfollow" method="post">
+					{{ csrf_field() }}
+					<button class="btn btn-outline-primary btn-block mt-2">Unfollow</button>
+				</form>
+			@else
+				<form action="/profile/{{ $user->username }}/follow" method="post">
+					{{ csrf_field() }}
+					<button class="btn btn-primary btn-block mt-2">Follow</button>
+				</form>
 				@if (session('success'))
 				<div class="alert alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
 					{{ session('success') }}
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    					<span aria-hidden="true">&times;</span>
-  					</button>
+						<span aria-hidden="true">&times;</span>
+						</button>
 				</div>
 				@endif
-			</form>
-		@endguest
+			@endif
+		@endif
 	</div>
 	<ul class="list-group list-group-flush">
 		<a href="/profile/{{ $user->username }}/" class="list-group-item list-group-item-action d-flex align-items-center">

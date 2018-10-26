@@ -22,7 +22,17 @@ class ControladorUsuarios extends Controller
 
 		$me->following()->attach($user);
 
-		return redirect("/profile/$username")->withSuccess('Usuario seguido con exito');
+		return redirect("/profile/$username")->withSuccess('Usuario followed con exito');
+	}
+
+	public function unfollow($username, Request $request) {
+		$user = $this->findByUsername($username);
+
+		$me = $request->user();
+
+		$me->following()->detach($user);
+
+		return redirect("/profile/$username")->withSuccess('Usuario unfollowed con exito');
 	}
 
 	public function following($username) {
