@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -24,9 +25,27 @@
 		/* body {
 			background-color: #f7f9fa;
 		} */
-		#footer {
+		/* #footer {
 			background-color: #E9ECEE;
 			height: 100px;
+		} */
+
+		html {
+			position: relative;
+			min-height: 100%;
+		}
+
+		body {
+			margin-bottom: 90px; /* Margin bottom by footer height */
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			min-height: 90px; /* Set the fixed height of the footer here */
+			/* line-height: 100px; /* Vertically center the text there */
+			background-color: #E9ECEE;
 		}
 
 		@yield('styles')
@@ -62,7 +81,7 @@
                             </li>
                         @else
                             <li class="nav-item dropdown">
-								<div class="row align-items-center">
+								<div class="row no-gutters align-items-center">
 									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 										<img class="rounded-circle pr-1" style="height: 30px;" src="{{ Auth::user()->avatar }}">
 										{{ Auth::user()->name }} <span class="caret"></span>
@@ -90,23 +109,19 @@
             </div>
         </nav>
 
-        <main class="container {{--bg-light--}} pb-4">
+        <main class="container py-4">
 			@yield('content')
         </main>
 
     </div>
 
 	<footer id="footer" class="footer">
-		<div class="container py-4 text-muted">
-			<span class="text-center">
+		<div class="container py-4">
+			<span class="text-muted">
 				Sitio dedicado al aprendizaje, con un footer diseñado especificamente para ello.<br>
 				© 2018 Ivan Morales
 			</span>
 		</div>
 	</footer>
-
-	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	<script src="{{ asset('js/app.js' )}}"></script>
 </body>
 </html>
