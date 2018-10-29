@@ -1,18 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='jumbotron text-center shadow'>
-    <h1 class="h3">Ivan Morales</h1>
-	<nav class="flex-row d-flex">
-		<ul class='nav nav-pills'>
-			@foreach ($links as $link)
-				<li class='nav-item pr-2'>
-					<a target="{{ $link[2] }}" class='nav-link btn btn-light' href="{{ $link[0] }}">{{ $link[1] }}</a>
-				</li>
-			@endforeach
-		</ul>
-	</nav>
-</div>
+@include('layouts.assets.jumbotron')
 
 <div class="row">
 	<div class="col-12">
@@ -24,7 +13,7 @@
 					<a class="btn btn-block btn-light mt-auto" href="/prueba">Open</a>
 				</div>
 			</div> --}}
-			<div class="card d-flex shadow-sm">
+			<div class="card shadow-sm">
 				<img class="card-img-top" src="https://lorempixel.com/640/360/transport/?0">
 				<div class="card-body d-flex flex-column">
 					<h5 class="card-title">Descripcion de la foto numero 1, esto es una prueba de texto corta</h5>
@@ -34,7 +23,7 @@
 				</div>
 			</div>
 			@for ($i=1; $i < 11; $i++)
-				<div class="card d-flex shadow-sm">
+				<div class="card shadow-sm">
 					<img class="card-img-top" src="https://lorempixel.com/640/360/transport/?{{ $i }}">
 					<div class="card-body d-flex flex-column">
 						<h5 class="card-title">Descripcion de la foto numero {{ $i+1 }}, esto es una prueba de textoun poco mas larga de forma que el texto wrapee mas alla de una linea</h5>
