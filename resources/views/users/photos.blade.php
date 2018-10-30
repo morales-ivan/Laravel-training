@@ -22,8 +22,6 @@
 			@endforeach
 		</div>
 	@else
-		<p>
-			No hay fotos para mostrar.
-		</p>
+		@include('photos.assets.empty')
 	@endif
 @endsection

@@ -36,9 +36,7 @@
 				@include('photos.assets.mainphotocard')
 			@empty
 				<div class="col-12">
-					<p>
-						No hay fotos para mostrar
-					</p>
+					@include('photos.assets.empty')
 				</div>
 			@endforelse
 		</div>
