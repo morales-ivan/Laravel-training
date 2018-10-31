@@ -13,7 +13,7 @@ class CreateConversationUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('coversation_user', function (Blueprint $table) {
+        Schema::create('conversation_user', function (Blueprint $table) {
             $table->integer('conversation_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
@@ -31,6 +31,6 @@ class CreateConversationUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coversation_user');
+        Schema::dropIfExists('conversation_user');
     }
 }
