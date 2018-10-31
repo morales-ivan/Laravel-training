@@ -7,11 +7,20 @@
 	</div>
 	<ul class="list-group list-group-flush">
 		@foreach ($conversation->privateMessages as $message)
-	       <li class="list-group-item">
+	       <li class="list-group-item @if ($message->user->id == Auth::user()->id)text-right @endif">
 			   <span class="font-weight-bold">{{ $message->user->name }}:</span> {{ $message->message }}<br>
-			   <span class="text-muted float-right">{{ $message->created_at }}</span>
+			   <small class="text-muted">{{ $message->created_at }}</small>
 		   </li>
 		@endforeach
 	</ul>
+	<div class="card-footer">
+		<form action="/profile/{{ $user->username }}/pms" method="post">
+			{{ csrf_field() }}
+			<div class="d-flex no-gutters">
+				<input type="text" name="message" class="form-control mr-3">
+				<button class="btn btn-primary">Enviar</button>
+			</div>
+		</form>
+	</div>
 </div>
 @endsection

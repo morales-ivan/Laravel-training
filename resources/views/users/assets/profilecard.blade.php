@@ -11,11 +11,13 @@
 					{{ csrf_field() }}
 					<button class="btn btn-outline-primary btn-block mt-2">Unfollow</button>
 				</form>
+				@if ( Gate::allows('pm', $user) )
 				<form action="/profile/{{ $user->username }}/pms" method="post">
 					{{ csrf_field() }}
 					<input type="text" name="message" class="form-control mt-2" >
 					<button class="btn btn-primary btn-block mt-2">Enviar</button>
 				</form>
+				@endif
 			@else
 				<form action="/profile/{{ $user->username }}/follow" method="post">
 					{{ csrf_field() }}
