@@ -16,9 +16,11 @@
 	<div class="card-footer">
 		<form action="/profile/{{ $user->username }}/pms" method="post">
 			{{ csrf_field() }}
-			<div class="d-flex no-gutters">
-				<input type="text" name="message" class="form-control mr-3">
-				<button class="btn btn-primary">Enviar</button>
+			<div class="d-flex">
+				<input type="text" placeholder="Escribe un mensaje..." name="message" class="form-control mr-3">
+				<button class="btn btn-primary">
+					<i class="material-icons">send</i>
+				</button>
 			</div>
 		</form>
 	</div>
