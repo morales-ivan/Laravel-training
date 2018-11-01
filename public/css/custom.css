@@ -1,0 +1,29 @@
+/* body {
+	background-color: #f7f9fa;
+} */
+/* #footer {
+	background-color: #E9ECEE;
+	height: 100px;
+} */
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 90px; /* Margin bottom by footer height */
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	min-height: 90px; /* Set the fixed height of the footer here */
+	/* line-height: 100px; /* Vertically center the text there */
+	background-color: #E9ECEE;
+}
+
+.material-icons {
+	vertical-align: middle;
+}

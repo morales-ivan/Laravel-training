@@ -19,35 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
 
 	<style>
-		/* body {
-			background-color: #f7f9fa;
-		} */
-		/* #footer {
-			background-color: #E9ECEE;
-			height: 100px;
-		} */
-
-		html {
-			position: relative;
-			min-height: 100%;
-		}
-
-		body {
-			margin-bottom: 90px; /* Margin bottom by footer height */
-		}
-
-		.footer {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			min-height: 90px; /* Set the fixed height of the footer here */
-			/* line-height: 100px; /* Vertically center the text there */
-			background-color: #E9ECEE;
-		}
-
 		@yield('styles')
 	</style>
 </head>
