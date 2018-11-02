@@ -60,17 +60,20 @@ class ControladorUsuarios extends Controller
 	public function sendPrivateMessage($username, Request $request) {
 		$user = $this->findByUsername($username);
 		$me = $request->user();
-		$message = $request->input('message');
 
-		$conversation = Conversation::between($me, $user);
+		if (areFollowers($user, $me)) {
+			$message = $request->input('message');
 
-		$privateMessage = PrivateMessage::create([
-			'conversation_id' => $conversation->id,
-			'user_id' => $me->id,
-			'message' => $message
-		]);
+			$conversation = Conversation::between($me, $user);
 
-		return redirect('/conversations/'.$conversation->id);
+			$privateMessage = PrivateMessage::create([
+				'conversation_id' => $conversation->id,
+				'user_id' => $me->id,
+				'message' => $message
+			]);
+		}
+
+		return redirect('/profile/'.$user->username.'/messages');
 	}
 
 	public function showConversation($username, Request $request) {
@@ -88,5 +91,11 @@ class ControladorUsuarios extends Controller
 			'me' => auth()->user(),
 			'user' => $user,
 		]);
+	}
+
+	private function areFollowers($user, $other) {
+		return
+			$user->isFollowing($other) &&
+			$other->isFollowing($user);
 	}
 }
