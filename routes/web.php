@@ -24,8 +24,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile/{username}/follow', 'ControladorUsuarios@follow');
 	Route::post('/profile/{username}/unfollow', 'ControladorUsuarios@unfollow');
 
-	Route::post('/profile/{username}/pms', 'ControladorUsuarios@sendPrivateMessage');
-	Route::get('/conversations/{conversation}', 'ControladorUsuarios@showConversation');
+	Route::post('/profile/{username}/sendmessage', 'ControladorUsuarios@sendPrivateMessage');
+	// Route::get('/conversations/{conversation}', 'ControladorUsuarios@showConversation');
+	Route::get('/profile/{username}/messages', 'ControladorUsuarios@showConversation');
+	
 	Route::post('/photos/create', 'ControladorFotos@create');
 });
 
