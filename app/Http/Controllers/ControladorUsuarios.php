@@ -73,12 +73,20 @@ class ControladorUsuarios extends Controller
 		return redirect('/conversations/'.$conversation->id);
 	}
 
-	public function showConversation(Conversation $conversation) {
+	public function showConversation($username, Request $request) {
+		$user = $this->findByUsername($username);
+		$me = $request->user();
+		// Puede que tenga que hacer auth::user()
+		// Bueno, quizas no..
+
+		$conversation = Conversation::between($me, $user);
+
 		$conversation->load('users', 'privateMessages');
 
 		return view('users.conversation', [
 			'conversation' => $conversation,
-			'user' => auth()->user(),
+			'me' => auth()->user(),
+			'user' => $user,
 		]);
 	}
 }
