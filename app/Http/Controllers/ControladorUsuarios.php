@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Conversation;
+use App\PrivateMessage;
 
 class ControladorUsuarios extends Controller
 {
@@ -53,5 +55,47 @@ class ControladorUsuarios extends Controller
 
 	private function findByUsername($username) {
 		return User::where('username', $username)->first();
+	}
+
+	public function sendPrivateMessage($username, Request $request) {
+		$user = $this->findByUsername($username);
+		$me = $request->user();
+
+		if (areFollowers($user, $me)) {
+			$message = $request->input('message');
+
+			$conversation = Conversation::between($me, $user);
+
+			$privateMessage = PrivateMessage::create([
+				'conversation_id' => $conversation->id,
+				'user_id' => $me->id,
+				'message' => $message
+			]);
+		}
+
+		return redirect('/profile/'.$user->username.'/messages');
+	}
+
+	public function showConversation($username, Request $request) {
+		$user = $this->findByUsername($username);
+		$me = $request->user();
+		// Puede que tenga que hacer auth::user()
+		// Bueno, quizas no..
+
+		$conversation = Conversation::between($me, $user);
+
+		$conversation->load('users', 'privateMessages');
+
+		return view('users.conversation', [
+			'conversation' => $conversation,
+			'me' => auth()->user(),
+			'user' => $user,
+		]);
+	}
+
+	private function areFollowers($user, $other) {
+		return
+			$user->isFollowing($other) &&
+			$other->isFollowing($user);
 	}
 }

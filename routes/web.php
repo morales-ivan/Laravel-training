@@ -19,11 +19,19 @@ Route::get('/auth/facebook/callback', 'SocialAuthController@callback');
 Route::post('/auth/facebook/register', 'SocialAuthController@register');
 
 Route::get('/photos/{photo}', 'ControladorFotos@show');
-Route::post('/photos/create', 'ControladorFotos@create')->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::post('/profile/{username}/follow', 'ControladorUsuarios@follow');
+	Route::post('/profile/{username}/unfollow', 'ControladorUsuarios@unfollow');
+
+	Route::post('/profile/{username}/messages/send', 'ControladorUsuarios@sendPrivateMessage');
+	// Route::get('/conversations/{conversation}', 'ControladorUsuarios@showConversation');
+	Route::get('/profile/{username}/messages', 'ControladorUsuarios@showConversation');
+
+	Route::post('/photos/create', 'ControladorFotos@create');
+});
 
 Route::get('/profile/{username}', 'ControladorUsuarios@show');
-Route::post('/profile/{username}/follow', 'ControladorUsuarios@follow');
-Route::post('/profile/{username}/unfollow', 'ControladorUsuarios@unfollow');
 Route::get('/profile/{username}/following', 'ControladorUsuarios@following');
 Route::get('/profile/{username}/followers', 'ControladorUsuarios@followers');
 
