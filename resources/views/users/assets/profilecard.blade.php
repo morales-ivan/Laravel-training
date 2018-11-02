@@ -7,15 +7,20 @@
 		</p>
 		@if (Auth::check() and (Auth::user() != $user))
 			@if (Auth::user()->isFollowing($user))
+				@if (Gate::allows('pm', $user))
+				<div class="d-flex mt-2">
+					<form class="d-flex flex-grow-1" action="/profile/{{ $user->username }}/unfollow" method="post">
+						{{ csrf_field() }}
+						<button class="btn btn-outline-primary btn-block mr-1">Unfollow</button>
+					</form>
+					<a href="/profile/{{ $user->username }}/messages" class="btn btn-primary">
+						<i class="material-icons" style="vertical-align: middle;">mail_outline</i>
+					</a>
+				</div>
+				@else
 				<form action="/profile/{{ $user->username }}/unfollow" method="post">
 					{{ csrf_field() }}
 					<button class="btn btn-outline-primary btn-block mt-2">Unfollow</button>
-				</form>
-				@if (Gate::allows('pm', $user))
-				<form action="/profile/{{ $user->username }}/pms" method="post">
-					{{ csrf_field() }}
-					<input type="text" name="message" class="form-control mt-2" >
-					<button class="btn btn-primary btn-block mt-2">Enviar</button>
 				</form>
 				@endif
 			@else

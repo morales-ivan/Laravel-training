@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('users.profile')
 
-@section('content')
+@section('user')
+	@include('users.assets.profilecard')
+@endsection
+
+@section('userContent')
 <div class="card">
 	<div class="card-header">
-		Conversacion con {{ $conversation->users->except($user->id)->implode('name', ', ') }}
+		Conversacion con {{ $conversation->users->except($me->id)->implode('name', ', ') }}
 	</div>
 	<ul class="list-group list-group-flush">
 		@foreach ($conversation->privateMessages as $message)
@@ -14,7 +18,7 @@
 		@endforeach
 	</ul>
 	<div class="card-footer">
-		<form action="/profile/{{ $user->username }}/pms" method="post">
+		<form action="/profile/{{ $user->username }}/messages/send" method="post">
 			{{ csrf_field() }}
 			<div class="d-flex">
 				<input type="text" placeholder="Escribe un mensaje..." name="message" class="form-control mr-3">
