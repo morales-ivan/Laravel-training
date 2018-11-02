@@ -61,7 +61,7 @@ class ControladorUsuarios extends Controller
 		$user = $this->findByUsername($username);
 		$me = $request->user();
 
-		if (areFollowers($user, $me)) {
+		if ($this->areFollowers($user, $me)) {
 			$message = $request->input('message');
 
 			$conversation = Conversation::between($me, $user);
