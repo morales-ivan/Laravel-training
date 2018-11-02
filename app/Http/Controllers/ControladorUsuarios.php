@@ -60,25 +60,42 @@ class ControladorUsuarios extends Controller
 	public function sendPrivateMessage($username, Request $request) {
 		$user = $this->findByUsername($username);
 		$me = $request->user();
-		$message = $request->input('message');
+
+		if (areFollowers($user, $me)) {
+			$message = $request->input('message');
+
+			$conversation = Conversation::between($me, $user);
+
+			$privateMessage = PrivateMessage::create([
+				'conversation_id' => $conversation->id,
+				'user_id' => $me->id,
+				'message' => $message
+			]);
+		}
+
+		return redirect('/profile/'.$user->username.'/messages');
+	}
+
+	public function showConversation($username, Request $request) {
+		$user = $this->findByUsername($username);
+		$me = $request->user();
+		// Puede que tenga que hacer auth::user()
+		// Bueno, quizas no..
 
 		$conversation = Conversation::between($me, $user);
 
-		$privateMessage = PrivateMessage::create([
-			'conversation_id' => $conversation->id,
-			'user_id' => $me->id,
-			'message' => $message
-		]);
-
-		return redirect('/conversations/'.$conversation->id);
-	}
-
-	public function showConversation(Conversation $conversation) {
 		$conversation->load('users', 'privateMessages');
 
 		return view('users.conversation', [
 			'conversation' => $conversation,
-			'user' => auth()->user(),
+			'me' => auth()->user(),
+			'user' => $user,
 		]);
+	}
+
+	private function areFollowers($user, $other) {
+		return
+			$user->isFollowing($other) &&
+			$other->isFollowing($user);
 	}
 }
