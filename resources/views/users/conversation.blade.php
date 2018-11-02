@@ -22,7 +22,7 @@
 		@endforelse
 	</ul>
 	<div class="card-footer">
-		@if (Gate::allows('pms', $user))
+		@if (Gate::allows('pm', $user))
 			<form action="/profile/{{ $user->username }}/messages/send" method="post">
 				{{ csrf_field() }}
 				<div class="d-flex">
