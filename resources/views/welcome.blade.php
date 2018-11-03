@@ -24,15 +24,6 @@
 	<div class="col-12">
 		<div class="card-columns">
 			@forelse ($photos as $photo)
-				{{-- <div class="card mb-4 shadow">
-					<img class="card-img-top" src="{{ $photo->image }}">
-					<div class="card-body">
-						<h5 class="card-title">{{ $photo->text }}</h5>
-						<p class="card-text">Submitted by {{ $photo->user->name }}<br>
-						<span class="text-muted">{{ $photo->created_at }}</span></p>
-						<a class="btn btn-block btn-light" href="photos/{{ $photo->id }}">Open</a>
-					</div>
-				</div> --}}
 				@include('photos.assets.mainphotocard')
 			@empty
 				<div class="col-12">
