@@ -20,11 +20,13 @@ class ControladorFotos extends Controller
 	public function create(CreatePhotoRequest $request) {
 
 		$user = $request->user();
+		$image = $request->file('image');
 
 		$photo = Photo::create([
 			'user_id' => $user->id,
 			'text' => $request->input('description'),
-			'image' => 'https://lorempixel.com/1920/1080/transport/?'.random_int(0, 1000)
+			'image' => $image->store('photos', 'public')
+			// 'image' => 'https://lorempixel.com/1920/1080/transport/?'.random_int(0, 1000)
 		]);
 
 		return view('photos.show', [
