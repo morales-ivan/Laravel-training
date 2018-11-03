@@ -1,18 +1,8 @@
-{{-- <form action="/photos/create" method="post">
-	<div class="form-group">
-		{{ csrf_field() }}
-		<input type="text" name="description" class="form-control @if ($errors->has('description')) is-invalid @endif" placeholder="Describe la imagen">
-		@if ($errors->has('description'))
-			@foreach ($errors->get('description') as $error)
-				<div class="invalid-feedback">
-					{{ $error }}
-				</div>
-			@endforeach
-		@endif
-	</div>
-</form> --}}
+{{-- Como implementar el boton para el modal (ejemplo):
 
-<button class="btn btn-success mb-4" data-toggle="modal" data-target="#submission">Subir foto</button>
+<button class="btn btn-success" data-toggle="modal" data-target="#submission">Subir foto</button>
+
+--}}
 
 <div class="modal fade" id="submission" tabindex="-1" role="dialog">
 	<form action="/photos/create" method="post" enctype="multipart/form-data">

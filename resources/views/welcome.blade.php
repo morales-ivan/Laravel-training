@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.assets.jumbotron')
 
-{{-- Formulario --}}
+<button class="btn btn-success mb-4" data-toggle="modal" data-target="#submission">Subir foto</button>
 @include('photos.upload')
 
 <div class="row">
